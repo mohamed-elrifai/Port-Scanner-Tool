@@ -2,6 +2,7 @@ import socket
 import threading
 import argparse
 from colorama import Fore, init
+import pyfiglet
 
 """ Limitations:
 1. Version detection is only implemented for HTTP (port 80), FTP (port 21), and SSH (port 22). Other services will not have version info.
@@ -24,6 +25,11 @@ init(autoreset=True)
 
 # List to store open ports and their versions as dictionaries
 open_ports_with_versions = []
+
+# Function to generate ASCII art for the username
+def print_username_ascii(username="msr001"):
+    ascii_art = pyfiglet.figlet_format(username)
+    print(Fore.BLUE + ascii_art)  # Print in blue
 
 # Function to map port numbers to service names
 def get_service_name(port):
@@ -175,6 +181,10 @@ def parse_args():
 
 # Main function to execute the port scanning
 if __name__ == "__main__":
+
+    # Print ASCII art for the username
+    print_username_ascii("msr001")
+
     # Parse arguments
     args = parse_args()
     
